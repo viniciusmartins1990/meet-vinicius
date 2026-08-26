@@ -2,632 +2,730 @@
 <html lang="en" data-theme="light">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Vinicius Martins | Business Analyst, Digital Transformation, Innovation and AI" />
-  <meta name="theme-color" content="#fffaf0" />
-  <title>Vinicius Martins | Business Analyst</title>
-  <style>
-    :root {
-      --red: #dd1d21;
-      --yellow: #ffcf00;
-      --bg: #fffaf0;
-      --surface: #fff;
-      --text: #151515;
-      --muted: #6a6a6a;
-      --line: rgba(21, 21, 21, .12);
-      --nav: rgba(255, 250, 240, .86);
-      --soft: rgba(255, 255, 255, .72);
-      --shadow: 0 24px 70px rgba(35, 18, 0, .14);
-      --card-dark: #151515;
-      --card-light: #fff
-    }
-
-    html[data-theme="dark"] {
-      --bg: #0d0e14;
-      --surface: #171820;
-      --text: #f5f5f7;
-      --muted: #adb0bd;
-      --line: rgba(255, 255, 255, .14);
-      --nav: rgba(13, 14, 20, .86);
-      --soft: rgba(255, 255, 255, .07);
-      --shadow: 0 24px 70px rgba(0, 0, 0, .45);
-      --card-dark: #05060b;
-      --card-light: #171820
-    }
-
-    * {
-      box-sizing: border-box
-    }
-
-    html {
-      scroll-behavior: smooth
-    }
-
-    body {
-      margin: 0;
-      font-family: Inter, "Segoe UI", Arial, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      overflow-x: hidden;
-      transition: background .3s, color .3s
-    }
-
-    body:before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -2;
-      background: radial-gradient(circle at 88% 5%, rgba(255, 207, 0, .20), transparent 27%), radial-gradient(circle at 8% 72%, rgba(221, 29, 33, .10), transparent 26%)
-    }
-
-    body:after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-      opacity: .18;
-      background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: linear-gradient(to bottom, black, transparent 80%)
-    }
-
-    a {
-      color: inherit
-    }
-
-    .wrap {
-      width: min(1180px, calc(100% - 40px));
-      margin: auto
-    }
-
-    .progress {
-      position: fixed;
-      left: 0;
-      top: 0;
-      height: 4px;
-      width: 0;
-      background: linear-gradient(90deg, var(--red), var(--yellow));
-      z-index: 100
-    }
-
-    .nav {
-      position: fixed;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 50;
-      width: min(980px, calc(100% - 28px));
-      padding: 10px 12px 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--nav);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 12px 38px rgba(0, 0, 0, .10)
-    }
-
-    .brand {
-      font-weight: 1000;
-      text-decoration: none
-    }
-
-    .brand span {
-      color: var(--red)
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px
-    }
-
-    .nav-link {
-      text-decoration: none;
-      font-size: .84rem;
-      font-weight: 900
-    }
-
-    .theme-toggle {
-      width: 48px;
-      height: 48px;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      background: var(--soft);
-      color: var(--text);
-      cursor: pointer;
-      font-size: 1.1rem;
-      transition: .25s
-    }
-
-    .theme-toggle:hover {
-      transform: rotate(12deg) scale(1.05)
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      border: 0;
-      border-radius: 999px;
-      padding: 13px 19px;
-      font: inherit;
-      font-size: .88rem;
-      font-weight: 900;
-      text-decoration: none;
-      cursor: pointer;
-      transition: .25s
-    }
-
-    .button.red {
-      background: var(--red);
-      color: #fff
-    }
-
-    .button.outline {
-      border: 1px solid var(--line);
-      background: var(--soft);
-      color: var(--text)
-    }
-
-    .button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, .18)
-    }
-
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      align-items: center;
-      padding: 138px 0 78px
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 70px;
-      align-items: center
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--soft);
-      font-size: .76rem;
-      font-weight: 1000;
-      text-transform: uppercase;
-      letter-spacing: .11em
-    }
-
-    .pulse {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--red);
-      box-shadow: 0 0 0 0 rgba(221, 29, 33, .45);
-      animation: pulse 2s infinite
-    }
-
-    @keyframes pulse {
-      70% {
-        box-shadow: 0 0 0 10px rgba(221, 29, 33, 0)
-      }
-    }
-
-    .hello {
-      margin: 28px 0 10px;
-      font-size: clamp(1.35rem, 2.4vw, 2.2rem);
-      font-weight: 800;
-      color: var(--muted)
-    }
-
-    .hero-name {
-      margin: 0;
-      font-size: clamp(4rem, 8.5vw, 8rem);
-      line-height: .84;
-      letter-spacing: -.075em;
-      text-transform: uppercase
-    }
-
-    .hero-name span {
-      color: var(--red)
-    }
-
-    .hero-copy {
-      max-width: 720px;
-      margin-top: 30px;
-      font-size: clamp(1.08rem, 1.8vw, 1.36rem);
-      line-height: 1.6;
-      color: var(--muted)
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px
-    }
-
-    .hero-note {
-      margin-top: 27px;
-      font-size: .76rem;
-      font-weight: 900;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .12em
-    }
-
-    .portrait-card {
-      position: relative;
-      min-height: 590px;
-      border-radius: 38px;
-      padding: 14px;
-      background: var(--card-dark);
-      box-shadow: var(--shadow);
-      transform: rotate(2deg);
-      overflow: hidden
-    }
-
-    .portrait-card:before {
-      content: "";
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      right: -95px;
-      top: -95px;
-      background: var(--yellow)
-    }
-
-    .portrait-frame {
-      position: relative;
-      z-index: 1;
-      height: 510px;
-      border-radius: 29px;
-      overflow: hidden;
-      background: #ddd
-    }
-
-    .portrait-frame img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top
-    }
-
-    .portrait-badge,
-    .portrait-status {
-      position: absolute;
-      z-index: 2;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(21, 21, 21, .86);
-      color: #fff;
-      font-size: .75rem;
-      font-weight: 900
-    }
-
-    .portrait-badge {
-      left: 32px;
-      top: 32px;
-      text-transform: uppercase;
-      letter-spacing: .08em
-    }
-
-    .portrait-status {
-      right: 28px;
-      bottom: 28px;
-      display: flex;
-      align-items: center;
-      gap: 8px
-    }
-
-    .portrait-status:before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: #23d160;
-      box-shadow: 0 0 0 4px rgba(35, 209, 96, .14)
-    }
-
-    .journey {
-      padding: 105px 0 120px;
-      scroll-margin-top: 100px
-    }
-
-    .section-kicker {
-      color: var(--red);
-      font-size: .78rem;
-      font-weight: 1000;
-      text-transform: uppercase;
-      letter-spacing: .16em
-    }
-
-    .section-title {
-      max-width: 920px;
-      margin: 14px 0 46px;
-      font-size: clamp(2.65rem, 5.4vw, 5.1rem);
-      line-height: .96;
-      letter-spacing: -.06em
-    }
-
-    .section-intro {
-      max-width: 780px;
-      margin: -20px 0 48px;
-      color: var(--muted);
-      font-size: 1.1rem;
-      line-height: 1.7
-    }
-
-    .path-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px
-    }
-
-    .path-card {
-      min-height: 400px;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      background: var(--card-light);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .07);
-      transition: .3s
-    }
-
-    .path-card:hover {
-      transform: translateY(-9px);
-      box-shadow: var(--shadow)
-    }
-
-    .path-card.featured {
-      background: var(--red);
-      color: #fff;
-      border-color: transparent
-    }
-
-    .path-card.dark-card {
-      background: var(--card-dark);
-      color: #fff;
-      border-color: transparent
-    }
-
-    .path-number {
-      font-size: .74rem;
-      font-weight: 1000;
-      letter-spacing: .14em;
-      opacity: .72
-    }
-
-    .path-icon {
-      width: 60px;
-      height: 60px;
-      display: grid;
-      place-items: center;
-      margin: 42px 0 24px;
-      border-radius: 18px;
-      background: var(--yellow);
-      color: #151515;
-      font-weight: 1000
-    }
-
-    .featured .path-icon {
-      background: #fff;
-      color: var(--red)
-    }
-
-    .path-card h3 {
-      margin: 0;
-      font-size: 2rem
-    }
-
-    .path-card p {
-      color: var(--muted);
-      line-height: 1.65
-    }
-
-    .featured p,
-    .dark-card p {
-      color: rgba(255, 255, 255, .78)
-    }
-
-    .path-link {
-      margin-top: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      text-decoration: none;
-      font-weight: 1000
-    }
-
-    .path-link span:last-child {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--yellow);
-      color: #151515
-    }
-
-    footer {
-      padding: 28px 0 42px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: .82rem
-    }
-
-    .footer-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: .7s
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: none
-    }
-
-    @media(max-width:900px) {
-
-      .hero-grid,
-      .path-grid {
-        grid-template-columns: 1fr
-      }
-
-      .portrait-card {
-        transform: none
-      }
-
-      .portrait-frame {
-        height: 560px
-      }
-    }
-
-    @media(max-width:560px) {
-      .wrap {
-        width: min(100% - 26px, 1180px)
-      }
-
-      .nav-link {
-        display: none
-      }
-
-      .hero-name {
-        font-size: 3.8rem
-      }
-
-      .hero {
-        padding-top: 125px
-      }
-
-      .portrait-frame {
-        height: 430px
-      }
-
-      .portrait-card,
-      .path-card {
-        border-radius: 27px
-      }
-
-      .footer-row {
-        display: block;
-        line-height: 1.8
-      }
-    }
-
-    @media(prefers-reduced-motion:reduce) {
-      html {
-        scroll-behavior: auto
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none
-      }
-
-      .pulse {
-        animation: none
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Vinicius Martins | Business Analyst, Digital Transformation and AI">
+    <meta name="theme-color" content="#fffaf0">
+    <title>Vinicius Martins | Business Analyst</title>
+    <style>
+        :root {
+            --r: #dd1d21;
+            --y: #ffcf00;
+            --bg: #fffaf0;
+            --surface: #fff;
+            --text: #151515;
+            --muted: #6a6a6a;
+            --line: rgba(21, 21, 21, .12);
+            --nav: rgba(255, 250, 240, .86);
+            --soft: rgba(255, 255, 255, .72);
+            --shadow: 0 24px 70px rgba(35, 18, 0, .14);
+            --dark: #151515
+        }
+
+        html[data-theme=dark] {
+            --bg: #0d0e14;
+            --surface: #171820;
+            --text: #f5f5f7;
+            --muted: #adb0bd;
+            --line: rgba(255, 255, 255, .14);
+            --nav: rgba(13, 14, 20, .86);
+            --soft: rgba(255, 255, 255, .07);
+            --shadow: 0 24px 70px rgba(0, 0, 0, .48);
+            --dark: #05060b
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            overflow-x: hidden;
+            transition: background .3s, color .3s
+        }
+
+        body:before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -2;
+            background: radial-gradient(circle at 88% 5%, rgba(255, 207, 0, .20), transparent 27%), radial-gradient(circle at 8% 72%, rgba(221, 29, 33, .10), transparent 26%)
+        }
+
+        body:after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            opacity: .16;
+            background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: linear-gradient(to bottom, #000, transparent 80%)
+        }
+
+        a {
+            color: inherit
+        }
+
+        .wrap {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto
+        }
+
+        .progress {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 4px;
+            width: 0;
+            background: linear-gradient(90deg, var(--r), var(--y));
+            z-index: 100
+        }
+
+        .nav {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+            width: min(980px, calc(100% - 28px));
+            padding: 10px 12px 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: var(--nav);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 12px 38px rgba(0, 0, 0, .10)
+        }
+
+        .brand {
+            font-weight: 1000;
+            text-decoration: none
+        }
+
+        .brand span {
+            color: var(--r)
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .nav-link {
+            text-decoration: none;
+            font-size: .84rem;
+            font-weight: 900
+        }
+
+        .theme-toggle {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: var(--soft);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: .25s
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(12deg) scale(1.06)
+        }
+
+        .button {
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            border: 0;
+            border-radius: 999px;
+            padding: 13px 19px;
+            font: inherit;
+            font-size: .88rem;
+            font-weight: 900;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform .3s, box-shadow .3s
+        }
+
+        .button:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 25%, rgba(255, 255, 255, .34), transparent 75%);
+            transform: translateX(-120%);
+            transition: transform .55s
+        }
+
+        .button:hover:after {
+            transform: translateX(120%)
+        }
+
+        .button:hover {
+            transform: translateY(-3px) scale(1.025);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, .18)
+        }
+
+        .button.red {
+            background: var(--r);
+            color: #fff
+        }
+
+        .button.outline {
+            border: 1px solid var(--line);
+            background: var(--soft);
+            color: var(--text)
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            align-items: center;
+            padding: 138px 0 78px
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 70px;
+            align-items: center
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 14px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: var(--soft);
+            font-size: .76rem;
+            font-weight: 1000;
+            text-transform: uppercase;
+            letter-spacing: .11em
+        }
+
+        .pulse {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--r);
+            box-shadow: 0 0 0 0 rgba(221, 29, 33, .45);
+            animation: pulse 2s infinite
+        }
+
+        @keyframes pulse {
+            70% {
+                box-shadow: 0 0 0 10px rgba(221, 29, 33, 0)
+            }
+        }
+
+        .hello {
+            margin: 28px 0 10px;
+            font-size: clamp(1.35rem, 2.4vw, 2.2rem);
+            font-weight: 800;
+            color: var(--muted);
+            animation: fadeUp .7s both
+        }
+
+        .hero-name {
+            margin: 0;
+            font-size: clamp(4rem, 8.5vw, 8rem);
+            line-height: .84;
+            letter-spacing: -.075em;
+            text-transform: uppercase;
+            overflow: hidden
+        }
+
+        .hero-name span {
+            display: block;
+            opacity: 0;
+            animation: revealName .9s forwards
+        }
+
+        .hero-name .last-name {
+            color: var(--r);
+            animation-delay: .18s
+        }
+
+        @keyframes revealName {
+            from {
+                opacity: 0;
+                transform: translateY(45px);
+                filter: blur(8px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+                filter: blur(0)
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .hero-copy {
+            max-width: 720px;
+            margin-top: 30px;
+            font-size: clamp(1.08rem, 1.8vw, 1.36rem);
+            line-height: 1.6;
+            color: var(--muted)
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px
+        }
+
+        .hero-note {
+            margin-top: 27px;
+            font-size: .76rem;
+            font-weight: 900;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: .12em
+        }
+
+        .portrait-card {
+            position: relative;
+            min-height: 590px;
+            border-radius: 38px;
+            padding: 14px;
+            background: var(--dark);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transform: rotate(2deg);
+            transition: transform .45s cubic-bezier(.2, .8, .2, 1), box-shadow .45s;
+            will-change: transform
+        }
+
+        .portrait-card:hover {
+            box-shadow: 0 35px 90px rgba(0, 0, 0, .28)
+        }
+
+        .portrait-card:before {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            right: -95px;
+            top: -95px;
+            background: var(--y)
+        }
+
+        .portrait-frame {
+            position: relative;
+            z-index: 1;
+            height: 510px;
+            border-radius: 29px;
+            overflow: hidden;
+            background: #ddd
+        }
+
+        .portrait-frame img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform .8s cubic-bezier(.2, .8, .2, 1), filter .5s
+        }
+
+        .portrait-card:hover img {
+            transform: scale(1.055);
+            filter: contrast(1.03) saturate(1.05)
+        }
+
+        .portrait-badge,
+        .portrait-status {
+            position: absolute;
+            z-index: 2;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(21, 21, 21, .86);
+            color: #fff;
+            font-size: .75rem;
+            font-weight: 900
+        }
+
+        .portrait-badge {
+            left: 32px;
+            top: 32px;
+            text-transform: uppercase;
+            letter-spacing: .08em
+        }
+
+        .portrait-status {
+            right: 28px;
+            bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .portrait-status:before {
+            content: "";
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #23d160;
+            box-shadow: 0 0 0 4px rgba(35, 209, 96, .14)
+        }
+
+        .journey {
+            padding: 105px 0 120px;
+            scroll-margin-top: 100px
+        }
+
+        .section-kicker {
+            color: var(--r);
+            font-size: .78rem;
+            font-weight: 1000;
+            text-transform: uppercase;
+            letter-spacing: .16em
+        }
+
+        .section-title {
+            max-width: 920px;
+            margin: 14px 0 46px;
+            font-size: clamp(2.65rem, 5.4vw, 5.1rem);
+            line-height: .96;
+            letter-spacing: -.06em
+        }
+
+        .section-intro {
+            max-width: 780px;
+            margin: -20px 0 48px;
+            color: var(--muted);
+            font-size: 1.1rem;
+            line-height: 1.7
+        }
+
+        .path-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px
+        }
+
+        .path-card {
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--line);
+            border-radius: 30px;
+            background: var(--surface);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .07);
+            transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s, border-color .35s
+        }
+
+        .path-card:before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -80%;
+            width: 45%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .25), transparent);
+            transform: rotate(20deg);
+            transition: left .65s;
+            pointer-events: none
+        }
+
+        .path-card:hover {
+            transform: translateY(-12px) scale(1.015);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, .20);
+            border-color: rgba(221, 29, 33, .35)
+        }
+
+        .path-card:hover:before {
+            left: 140%
+        }
+
+        .path-card.featured {
+            background: var(--r);
+            color: #fff;
+            border-color: transparent
+        }
+
+        .path-card.dark-card {
+            background: var(--dark);
+            color: #fff;
+            border-color: transparent
+        }
+
+        .path-number {
+            font-size: .74rem;
+            font-weight: 1000;
+            letter-spacing: .14em;
+            opacity: .72
+        }
+
+        .path-icon {
+            width: 60px;
+            height: 60px;
+            display: grid;
+            place-items: center;
+            margin: 42px 0 24px;
+            border-radius: 18px;
+            background: var(--y);
+            color: #151515;
+            font-weight: 1000;
+            transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s
+        }
+
+        .featured .path-icon {
+            background: #fff;
+            color: var(--r)
+        }
+
+        .path-card:hover .path-icon {
+            transform: rotate(-7deg) scale(1.1);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, .18)
+        }
+
+        .path-card h3 {
+            margin: 0;
+            font-size: 2rem
+        }
+
+        .path-card p {
+            color: var(--muted);
+            line-height: 1.65
+        }
+
+        .featured p,
+        .dark-card p {
+            color: rgba(255, 255, 255, .78)
+        }
+
+        .path-link {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            font-weight: 1000
+        }
+
+        .path-link span:last-child {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--y);
+            color: #151515;
+            transition: transform .3s
+        }
+
+        .path-card:hover .path-link span:last-child {
+            transform: translate(4px, -4px) rotate(-8deg)
+        }
+
+        footer {
+            padding: 28px 0 42px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: .82rem
+        }
+
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: .7s
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none
+        }
+
+        @media(max-width:900px) {
+
+            .hero-grid,
+            .path-grid {
+                grid-template-columns: 1fr
+            }
+
+            .portrait-card {
+                transform: none !important
+            }
+
+            .portrait-frame {
+                height: 560px
+            }
+        }
+
+        @media(max-width:560px) {
+            .wrap {
+                width: min(100% - 26px, 1180px)
+            }
+
+            .nav-link {
+                display: none
+            }
+
+            .hero-name {
+                font-size: 3.8rem
+            }
+
+            .hero {
+                padding-top: 125px
+            }
+
+            .portrait-frame {
+                height: 430px
+            }
+
+            .portrait-card,
+            .path-card {
+                border-radius: 27px
+            }
+
+            .footer-row {
+                display: block;
+                line-height: 1.8
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            html {
+                scroll-behavior: auto
+            }
+
+            .reveal,
+            .hero-name span,
+            .hello {
+                opacity: 1;
+                transform: none;
+                filter: none;
+                animation: none
+            }
+
+            .pulse {
+                animation: none
+            }
+
+            .path-card,
+            .portrait-card,
+            .portrait-frame img,
+            .button {
+                transition: none
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="progress" id="progress"></div>
-  <nav class="nav">
-    <a class="brand" href="#home">VM<span>.</span></a>
-    <div class="nav-actions"><a class="nav-link" href="#journey">Choose Your Journey</a><button class="theme-toggle"
-        id="themeToggle" aria-label="Switch color theme" title="Switch color theme">◐</button></div>
-  </nav>
-  <main>
-    <header class="hero" id="home">
-      <div class="wrap hero-grid">
-        <div class="reveal">
-          <div class="eyebrow"><span class="pulse"></span>Business Analyst · Digital Innovator</div>
-          <div class="hello">Hi, my name is</div>
-          <h1 class="hero-name">Vinicius<br><span>Martins</span></h1>
-          <p class="hero-copy">I connect business needs, technology and people to simplify complexity, improve decisions
-            and create practical digital solutions.</p>
-          <div class="hero-actions"><a class="button red" href="#journey">Choose your journey ↓</a><a
-              class="button outline" href="Vinicius_Martins_CV_Business_Analyst.pdf" target="_blank"
-              rel="noopener noreferrer">View resume ↗</a></div>
-          <div class="hero-note">Business Analysis · AI &amp; Automation · Data · Transformation</div>
+    <div class="progress" id="progress"></div>
+    <nav class="nav"><a class="brand" href="#home">VM<span>.</span></a>
+        <div class="nav-actions"><a class="nav-link" href="#journey">Choose Your Journey</a><button class="theme-toggle"
+                id="themeToggle" aria-label="Switch color theme" title="Switch color theme">◐</button></div>
+    </nav>
+    <main>
+        <header class="hero" id="home">
+            <div class="wrap hero-grid">
+                <div class="reveal">
+                    <div class="eyebrow"><span class="pulse"></span>Business Analyst · Digital Innovator</div>
+                    <div class="hello">Hi, my name is</div>
+                    <h1 class="hero-name"><span class="first-name">Vinicius</span><span class="last-name">Martins</span>
+                    </h1>
+                    <p class="hero-copy">I connect business needs, technology and people to simplify complexity, improve
+                        decisions and create practical digital solutions.</p>
+                    <div class="hero-actions"><a class="button red" href="#journey">Choose your journey ↓</a><a
+                            class="button outline" href="Vinicius_Martins_CV_Business_Analyst.pdf" target="_blank"
+                            rel="noopener noreferrer">View resume ↗</a></div>
+                    <div class="hero-note">Business Analysis · AI &amp; Automation · Data · Transformation</div>
+                </div>
+                <aside class="portrait-card reveal">
+                    <div class="portrait-badge">Business Analyst</div>
+                    <div class="portrait-frame"><img src="my-picture.png"
+                            alt="Professional portrait of Vinicius Martins"></div>
+                    <div class="portrait-status">Open to new challenges</div>
+                </aside>
+            </div>
+        </header>
+        <section class="journey" id="journey">
+            <div class="wrap">
+                <div class="section-kicker reveal">Choose your journey</div>
+                <h2 class="section-title reveal">What would you like to explore?</h2>
+                <p class="section-intro reveal">Explore the story behind my application, review my career profile or
+                    open my resume. Each path offers a different perspective on the value I can bring.</p>
+                <div class="path-grid">
+                    <article class="path-card featured reveal">
+                        <div class="path-number">01 · INTERACTIVE STORY</div>
+                        <div class="path-icon">✦</div>
+                        <h3>Cover Letter</h3>
+                        <p>Discover the thinking, experience and ambition behind my application.</p><a class="path-link"
+                            href="cover-letter.html"><span>Explore my story</span><span>↗</span></a>
+                    </article>
+                    <article class="path-card reveal">
+                        <div class="path-number">02 · CAREER PROFILE</div>
+                        <div class="path-icon">TC</div>
+                        <h3>Talent Card</h3>
+                        <p>Review my professional journey, career interests, capabilities and development focus.</p><a
+                            class="path-link" href="Vinicius_Martins_Talent_Cards_25_08_2026.pdf" target="_blank"
+                            rel="noopener noreferrer"><span>View Talent Card</span><span>↗</span></a>
+                    </article>
+                    <article class="path-card dark-card reveal">
+                        <div class="path-number">03 · EXPERIENCE</div>
+                        <div class="path-icon">CV</div>
+                        <h3>Resume</h3>
+                        <p>Explore my experience in Business Analysis, digital transformation, automation and AI.</p><a
+                            class="path-link" href="Vinicius_Martins_CV_Business_Analyst.pdf" target="_blank"
+                            rel="noopener noreferrer"><span>View Resume</span><span>↗</span></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="wrap footer-row">
+            <div>Vinicius Martins · Professional Portfolio</div>
+            <div>Business Analysis · Digital Transformation · AI &amp; Automation</div>
         </div>
-        <aside class="portrait-card reveal">
-          <div class="portrait-badge">Business Analyst</div>
-          <div class="portrait-frame"><img src="my-picture.png" alt="Professional portrait of Vinicius Martins" /></div>
-          <div class="portrait-status">Open to new challenges</div>
-        </aside>
-      </div>
-    </header>
-    <section class="journey" id="journey">
-      <div class="wrap">
-        <div class="section-kicker reveal">Choose your journey</div>
-        <h2 class="section-title reveal">What would you like to explore?</h2>
-        <p class="section-intro reveal">Explore the story behind my application, review my career profile or open my
-          resume. Each path offers a different perspective on the value I can bring.</p>
-        <div class="path-grid">
-          <article class="path-card featured reveal">
-            <div class="path-number">01 · INTERACTIVE STORY</div>
-            <div class="path-icon">✦</div>
-            <h3>Cover Letter</h3>
-            <p>Discover the thinking, experience and ambition behind my application.</p><a class="path-link"
-              href="cover-letter.html"><span>Explore my story</span><span>↗</span></a>
-          </article>
-          <article class="path-card reveal">
-            <div class="path-number">02 · CAREER PROFILE</div>
-            <div class="path-icon">TC</div>
-            <h3>Talent Card</h3>
-            <p>Review my professional journey, career interests, capabilities and development focus.</p><a
-              class="path-link" href="Vinicius_Martins_Talent_Cards_25_08_2026.pdf" target="_blank"
-              rel="noopener noreferrer"><span>View Talent Card</span><span>↗</span></a>
-          </article>
-          <article class="path-card dark-card reveal">
-            <div class="path-number">03 · EXPERIENCE</div>
-            <div class="path-icon">CV</div>
-            <h3>Resume</h3>
-            <p>Explore my experience in Business Analysis, digital transformation, automation and AI.</p><a
-              class="path-link" href="Vinicius_Martins_CV_Business_Analyst.pdf" target="_blank"
-              rel="noopener noreferrer"><span>View Resume</span><span>↗</span></a>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div class="wrap footer-row">
-      <div>Vinicius Martins · Professional Portfolio</div>
-      <div>Business Analysis · Digital Transformation · AI &amp; Automation</div>
-    </div>
-  </footer>
-  <script>
-    const root = document.documentElement, toggle = document.getElementById('themeToggle'), meta = document.querySelector('meta[name="theme-color"]');
-    const saved = localStorage.getItem('vm-theme'); if (saved) { root.dataset.theme = saved }
-    function syncTheme() { const dark = root.dataset.theme === 'dark'; toggle.textContent = dark ? '☀' : '☾'; meta.setAttribute('content', dark ? '#0d0e14' : '#fffaf0') }
-    toggle.addEventListener('click', () => { root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark'; localStorage.setItem('vm-theme', root.dataset.theme); syncTheme() }); syncTheme();
-    const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }), { threshold: .12 }); document.querySelectorAll('.reveal').forEach(e => observer.observe(e));
-    addEventListener('scroll', () => { const p = document.documentElement, t = p.scrollHeight - p.clientHeight; document.getElementById('progress').style.width = (t > 0 ? p.scrollTop / t * 100 : 0) + '%' });
-  </script>
+    </footer>
+    <script>
+        const root = document.documentElement, toggle = document.getElementById('themeToggle'), meta = document.querySelector('meta[name="theme-color"]'), saved = localStorage.getItem('vm-theme'); if (saved) root.dataset.theme = saved; function syncTheme() { const d = root.dataset.theme === 'dark'; toggle.textContent = d ? '☀' : '☾'; meta.content = d ? '#0d0e14' : '#fffaf0' } toggle.onclick = () => { root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark'; localStorage.setItem('vm-theme', root.dataset.theme); syncTheme() }; syncTheme(); const observer = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }), { threshold: .12 }); document.querySelectorAll('.reveal').forEach(e => observer.observe(e)); addEventListener('scroll', () => { const p = document.documentElement, t = p.scrollHeight - p.clientHeight; document.getElementById('progress').style.width = (t ? p.scrollTop / t * 100 : 0) + '%' }); const portrait = document.querySelector('.portrait-card'); if (portrait && matchMedia('(pointer:fine)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches) { portrait.addEventListener('mousemove', e => { const r = portrait.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top, ry = (x / r.width - .5) * 8, rx = (y / r.height - .5) * -8; portrait.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)` }); portrait.addEventListener('mouseleave', () => portrait.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)') }
+    </script>
 </body>
 
 </html>
