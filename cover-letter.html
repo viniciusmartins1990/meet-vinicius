@@ -629,10 +629,11 @@
     .difference-box h2 {
       position: relative;
       z-index: 1;
-      max-width: 1030px;
+      max-width: 960px;
       margin: 0;
-      font-size: clamp(2.2rem, 4.7vw, 4.7rem);
-      line-height: 1.07
+      font-size: clamp(1.9rem, 3.6vw, 3.7rem);
+      line-height: 1.12;
+      letter-spacing: -0.045em;
     }
 
     .difference-box h2 span {
@@ -642,11 +643,15 @@
     .difference-box p {
       position: relative;
       z-index: 1;
-      max-width: 780px;
-      margin: 30px 0 0;
+      max-width: 820px;
+      margin: 26px 0 0;
       color: var(--muted);
-      font-size: 1.12rem;
-      line-height: 1.7
+      font-size: clamp(1rem, 1.35vw, 1.12rem);
+      line-height: 1.72;
+    }
+
+    .difference-box p+p {
+      margin-top: 14px;
     }
 
     .contact {
@@ -869,11 +874,13 @@
       <div class="wrap">
         <div class="difference-box reveal">
           <div class="section-kicker">What sets me apart</div>
-          <h2>If you are looking for someone who thinks beyond the obvious, challenges conventional approaches and
-            brings <span>creativity to complex business problems,</span> you are in the right place.</h2>
-          <p>I do not settle for the basic or simply follow the way things have always been done. I continuously explore
-            new perspectives, test new ideas and challenge myself to elevate the work, the solution and the impact we
-            can create together.</p>
+          <h2>I commit to bringing curiosity, creativity, and a learner mindset to every challenge.<span>I enjoy
+              exploring new perspectives, asking thoughtful questions, and working with others to find practical ways
+              forward. I do not expect to have every answer from the beginning,
+              but I am always willing to listen, learn, challenge myself, and contribute beyond the immediate
+              task.</span> you are in the right place.</h2>
+          <p>My goal is to keep improving the quality of my work while helping the team turn
+            complex business needs into solutions that create meaningful and sustainable value.</p>
         </div>
       </div>
     </section>
