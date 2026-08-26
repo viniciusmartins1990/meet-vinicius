@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vinicius Martins | Business Analyst, Digital Transformation and AI" />
+  <meta name="theme-color" content="#151515" />
+  <title>Vinicius Martins | Business Analyst</title>
+  <style>
+    :root{
+      --red:#dd1d21;
+      --red-dark:#b51218;
+      --yellow:#ffcf00;
+      --dark:#151515;
+      --dark-soft:#222222;
+      --paper:#fffaf0;
+      --white:#ffffff;
+      --muted:#6a6a6a;
+      --line:rgba(21,21,21,.12);
+      --shadow:0 24px 70px rgba(35,18,0,.14);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,"Segoe UI",Arial,sans-serif;
+      color:var(--dark);
+      background:var(--paper);
+      overflow-x:hidden;
+    }
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-2;
+      background:
+        radial-gradient(circle at 88% 5%,rgba(255,207,0,.22),transparent 27%),
+        radial-gradient(circle at 8% 72%,rgba(221,29,33,.09),transparent 26%);
+    }
+    body:after{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-1;
+      opacity:.22;
+      background-image:linear-gradient(rgba(21,21,21,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(21,21,21,.035) 1px,transparent 1px);
+      background-size:48px 48px;
+      mask-image:linear-gradient(to bottom,black,transparent 80%);
+    }
+
+    a{color:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    .wrap{width:min(1180px,calc(100% - 40px));margin:auto}
+    .progress{position:fixed;left:0;top:0;height:4px;width:0;background:linear-gradient(90deg,var(--red),var(--yellow));z-index:100}
+
+    .nav{
+      position:fixed;
+      top:18px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:50;
+      width:min(980px,calc(100% - 28px));
+      padding:10px 12px 10px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border:1px solid rgba(255,255,255,.5);
+      border-radius:999px;
+      background:rgba(255,250,240,.82);
+      backdrop-filter:blur(18px);
+      box-shadow:0 12px 38px rgba(0,0,0,.09);
+    }
+    .brand{font-size:1rem;font-weight:1000;letter-spacing:-.04em;text-decoration:none}
+    .brand span{color:var(--red)}
+    .nav-links{display:flex;align-items:center;gap:20px}
+    .nav-links>a:not(.nav-cta){font-size:.84rem;font-weight:800;text-decoration:none}
+    .nav-links>a:not(.nav-cta):hover{color:var(--red)}
+    .nav-cta,.button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      border:0;
+      border-radius:999px;
+      padding:13px 19px;
+      font:inherit;
+      font-size:.88rem;
+      font-weight:900;
+      text-decoration:none;
+      cursor:pointer;
+      transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+    }
+    .nav-cta,.button.red{background:var(--red);color:var(--white)}
+    .button.dark{background:var(--dark);color:var(--white)}
+    .button.yellow{background:var(--yellow);color:var(--dark)}
+    .button.outline{border:1px solid var(--line);background:rgba(255,255,255,.66);color:var(--dark)}
+    .nav-cta:hover,.button:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.18)}
+
+    .hero{min-height:100vh;display:grid;align-items:center;padding:138px 0 78px}
+    .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:68px;align-items:center}
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:9px 14px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.72);
+      font-size:.76rem;
+      font-weight:1000;
+      text-transform:uppercase;
+      letter-spacing:.11em;
+    }
+    .pulse{width:9px;height:9px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(221,29,33,.45);animation:pulse 2s infinite}
+    @keyframes pulse{70%{box-shadow:0 0 0 10px rgba(221,29,33,0)}}
+    h1{font-size:clamp(3.7rem,7.4vw,7.2rem);line-height:.86;letter-spacing:-.075em;margin:26px 0}
+    .outline-word{color:transparent;-webkit-text-stroke:2px var(--dark)}
+    .hero-copy{max-width:720px;font-size:clamp(1.08rem,1.8vw,1.36rem);line-height:1.6;color:#3e3e3e}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .hero-note{margin-top:27px;font-size:.76rem;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+
+    .identity-card{
+      position:relative;
+      overflow:hidden;
+      min-height:530px;
+      padding:36px;
+      border-radius:38px;
+      background:var(--dark);
+      color:var(--white);
+      box-shadow:var(--shadow);
+      transform:rotate(2deg);
+    }
+    .identity-card:before{content:"";position:absolute;width:250px;height:250px;border-radius:50%;right:-96px;top:-96px;background:var(--yellow)}
+    .identity-card:after{content:"VM";position:absolute;right:18px;top:20px;color:rgba(21,21,21,.17);font-size:4.5rem;font-weight:1000;letter-spacing:-.08em}
+    .visual-mark{width:92px;height:92px;display:grid;place-items:center;margin-bottom:90px;border-radius:26px;background:var(--red);font-size:2rem;font-weight:1000;transform:rotate(-2deg)}
+    .identity-card h2{margin:0 0 8px;font-size:2.25rem;letter-spacing:-.045em}
+    .role{color:#d8d8d8;font-weight:700}
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 28px}
+    .skill{padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.10);font-size:.75rem;font-weight:800}
+    .identity-quote{padding-top:24px;border-top:1px solid rgba(255,255,255,.15);font-size:1.06rem;line-height:1.55;color:#f0f0f0}
+
+    section{padding:108px 0}
+    .section-kicker{color:var(--red);font-size:.78rem;font-weight:1000;text-transform:uppercase;letter-spacing:.16em}
+    .section-title{max-width:920px;margin:14px 0 46px;font-size:clamp(2.65rem,5.4vw,5.1rem);line-height:.96;letter-spacing:-.06em}
+    .section-intro{max-width:780px;margin:-20px 0 48px;color:var(--muted);font-size:1.1rem;line-height:1.7}
+
+    .path-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .path-card{
+      position:relative;
+      overflow:hidden;
+      min-height:420px;
+      padding:30px;
+      display:flex;
+      flex-direction:column;
+      border:1px solid var(--line);
+      border-radius:30px;
+      background:rgba(255,255,255,.82);
+      box-shadow:0 10px 30px rgba(0,0,0,.04);
+      transition:transform .3s ease,box-shadow .3s ease;
+    }
+    .path-card:hover{transform:translateY(-9px);box-shadow:var(--shadow)}
+    .path-card.featured{background:var(--red);color:white;border-color:transparent}
+    .path-card.dark-card{background:var(--dark);color:white;border-color:transparent}
+    .path-number{font-size:.74rem;font-weight:1000;letter-spacing:.14em;opacity:.7}
+    .path-icon{width:60px;height:60px;display:grid;place-items:center;margin:42px 0 24px;border-radius:18px;background:var(--yellow);color:var(--dark);font-size:1.35rem;font-weight:1000}
+    .featured .path-icon{background:white;color:var(--red)}
+    .path-card h3{margin:0;font-size:2rem;letter-spacing:-.04em}
+    .path-card p{margin:15px 0 25px;color:var(--muted);line-height:1.65}
+    .featured p,.dark-card p{color:rgba(255,255,255,.77)}
+    .path-link{margin-top:auto;display:inline-flex;align-items:center;justify-content:space-between;text-decoration:none;font-weight:1000}
+    .path-link span:last-child{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:var(--yellow);color:var(--dark);transition:transform .25s ease}
+    .path-card:hover .path-link span:last-child{transform:translate(3px,-3px)}
+
+    .about{background:var(--dark);color:white}
+    .about .section-kicker{color:var(--yellow)}
+    .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}
+    .about-copy{font-size:clamp(1.35rem,2.3vw,2.05rem);line-height:1.38;letter-spacing:-.03em;color:#f5f5f5}
+    .about-copy strong{color:var(--yellow)}
+    .principles{display:grid;gap:13px}
+    .principle{padding:22px 24px;display:grid;grid-template-columns:48px 1fr;gap:17px;align-items:start;border:1px solid rgba(255,255,255,.13);border-radius:22px;background:rgba(255,255,255,.045)}
+    .principle b{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;background:var(--red)}
+    .principle h3{margin:2px 0 7px}
+    .principle p{margin:0;color:#c9c9c9;line-height:1.55}
+
+    .proof-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+    .proof-main,.proof-side{border-radius:34px;padding:clamp(34px,5vw,60px)}
+    .proof-main{background:linear-gradient(135deg,var(--yellow),#ffe46e);box-shadow:var(--shadow)}
+    .proof-main .big-number{font-size:clamp(4.6rem,9vw,8.8rem);line-height:.8;font-weight:1000;letter-spacing:-.08em;color:var(--red)}
+    .proof-main h3{font-size:2rem;letter-spacing:-.04em;margin:26px 0 10px}
+    .proof-main p{max-width:620px;line-height:1.65;color:#483f00}
+    .proof-side{display:flex;flex-direction:column;justify-content:space-between;background:var(--red);color:white}
+    .proof-side q{font-size:clamp(1.65rem,3vw,2.8rem);font-weight:900;line-height:1.12;letter-spacing:-.045em}
+    .proof-side small{margin-top:35px;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
+
+    .difference-box{position:relative;overflow:hidden;padding:clamp(42px,7vw,86px);border-radius:42px;background:white;border:1px solid var(--line);box-shadow:var(--shadow)}
+    .difference-box:after{content:"↗";position:absolute;right:3%;bottom:-23%;font-size:20rem;font-weight:1000;color:rgba(221,29,33,.055);transform:rotate(-5deg)}
+    .difference-box h2{position:relative;z-index:1;max-width:1030px;margin:0;font-size:clamp(2.2rem,4.7vw,4.7rem);line-height:1.07;letter-spacing:-.058em}
+    .difference-box h2 span{color:var(--red)}
+    .difference-box p{position:relative;z-index:1;max-width:780px;margin:30px 0 0;color:var(--muted);font-size:1.12rem;line-height:1.7}
+
+    .contact{text-align:center;padding:120px 0}
+    .contact h2{max-width:950px;margin:14px auto 24px;font-size:clamp(3rem,6.2vw,6rem);line-height:.94;letter-spacing:-.07em}
+    .contact h2 span{color:var(--red)}
+    .contact p{max-width:680px;margin:0 auto 30px;color:var(--muted);font-size:1.15rem;line-height:1.65}
+    .contact-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+
+    footer{padding:28px 0 42px;border-top:1px solid var(--line)}
+    .footer-row{display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:.82rem}
+
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:900px){
+      .hero-grid,.about-grid,.proof-grid{grid-template-columns:1fr}
+      .path-grid{grid-template-columns:1fr}
+      .identity-card{min-height:auto;transform:none}
+      .visual-mark{margin-bottom:70px}
+      .path-card{min-height:360px}
+      .nav-links>a:not(.nav-cta){display:none}
+    }
+    @media(max-width:560px){
+      .wrap{width:min(100% - 26px,1180px)}
+      .nav{padding-left:16px}
+      .nav-cta{padding:11px 14px;font-size:.8rem}
+      h1{font-size:3.55rem}
+      .hero{padding-top:125px}
+      section{padding:82px 0}
+      .identity-card,.path-card,.difference-box{border-radius:27px}
+      .footer-row{display:block;line-height:1.8}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.pulse{animation:none}}
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="#home">VM<span>.</span></a>
+    <div class="nav-links">
+      <a href="#explore">Explore</a>
+      <a href="#about">About</a>
+      <a href="#impact">Impact</a>
+      <a class="nav-cta" href="cover-letter.html">Cover Letter <span>↗</span></a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><span class="pulse"></span>Business Analyst · Digital Innovator</div>
+          <h1>Ideas into<br><span class="outline-word">solutions.</span><br>Solutions into value.</h1>
+          <p class="hero-copy">Hello, I am Vinicius Martins. I connect business needs, technology and people to simplify complexity, improve decisions and create practical digital solutions.</p>
+          <div class="hero-actions">
+            <a class="button red" href="#explore">Explore my profile <span>↓</span></a>
+            <a class="button outline" href="Vinicius_Martins_CV_Business_Analyst.pdf" target="_blank" rel="noopener noreferrer">View resume <span>↗</span></a>
+          </div>
+          <div class="hero-note">Business Analysis · AI &amp; Automation · Data · Transformation</div>
+        </div>
+
+        <aside class="identity-card reveal" aria-label="Professional profile summary">
+          <div class="visual-mark">VM</div>
+          <h2>Vinicius Martins</h2>
+          <div class="role">Information Management Advisor</div>
+          <div class="skills">
+            <span class="skill">Business Analysis</span>
+            <span class="skill">Power Platform</span>
+            <span class="skill">AI Agents</span>
+            <span class="skill">SharePoint</span>
+            <span class="skill">Stakeholder Engagement</span>
+          </div>
+          <div class="identity-quote">“I do not just identify opportunities. I transform them into solutions.”</div>
+        </aside>
+      </div>
+    </header>
+
+    <section id="explore">
+      <div class="wrap">
+        <div class="section-kicker reveal">Choose your journey</div>
+        <h2 class="section-title reveal">What would you like to explore?</h2>
+        <p class="section-intro reveal">Explore the story behind my application, review my career profile or open my resume. Each path offers a different perspective on the value I can bring.</p>
+
+        <div class="path-grid">
+          <article class="path-card featured reveal">
+            <div class="path-number">01 · INTERACTIVE STORY</div>
+            <div class="path-icon">✦</div>
+            <h3>Cover Letter</h3>
+            <p>Discover why Business Analysis is my dream opportunity, what sets me apart and the impact I want to create.</p>
+            <a class="path-link" href="cover-letter.html"><span>Explore my story</span><span>↗</span></a>
+          </article>
+
+          <article class="path-card reveal">
+            <div class="path-number">02 · CAREER PROFILE</div>
+            <div class="path-icon">TC</div>
+            <h3>Talent Card</h3>
+            <p>Review my professional journey, career interests, capabilities and development focus in one concise profile.</p>
+            <a class="path-link" href="Vinicius_Martins_Talent_Cards_25_08_2026.pdf" target="_blank" rel="noopener noreferrer"><span>View Talent Card</span><span>↗</span></a>
+          </article>
+
+          <article class="path-card dark-card reveal">
+            <div class="path-number">03 · EXPERIENCE</div>
+            <div class="path-icon">CV</div>
+            <h3>Resume</h3>
+            <p>Explore my experience in Business Analysis, digital transformation, information management, automation and AI-enabled solutions.</p>
+            <a class="path-link" href="Vinicius_Martins_CV_Business_Analyst.pdf" target="_blank" rel="noopener noreferrer"><span>View Resume</span><span>↗</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="wrap about-grid">
+        <div class="reveal">
+          <div class="section-kicker">Who I am</div>
+          <h2 class="section-title">A bridge between business ambition and digital execution.</h2>
+          <p class="about-copy">I work at the intersection of <strong>business, technology, data and people.</strong> My role is to turn ambiguity into clarity, align stakeholders around the real problem and help move ideas from conversation to adoption.</p>
+        </div>
+
+        <div class="principles">
+          <article class="principle reveal"><b>01</b><div><h3>Discover before designing</h3><p>I listen, investigate and challenge assumptions before proposing a solution.</p></div></article>
+          <article class="principle reveal"><b>02</b><div><h3>Translate complexity</h3><p>I make technical possibilities understandable and business needs actionable.</p></div></article>
+          <article class="principle reveal"><b>03</b><div><h3>Build for adoption</h3><p>I focus on solutions that people can understand, trust and use in their daily work.</p></div></article>
+          <article class="principle reveal"><b>04</b><div><h3>Keep raising the bar</h3><p>I explore new perspectives, test new ideas and look beyond the expected result.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact">
+      <div class="wrap">
+        <div class="section-kicker reveal">Impact mindset</div>
+        <h2 class="section-title reveal">Evidence over adjectives.</h2>
+        <div class="proof-grid">
+          <article class="proof-main reveal">
+            <div class="big-number">$6MM</div>
+            <h3>NPV delivered through an AI Builder initiative</h3>
+            <p>A practical example of how curiosity, business understanding and emerging technology can create measurable value.</p>
+          </article>
+          <article class="proof-side reveal">
+            <q>Technology creates possibilities. People create transformation.</q>
+            <small>My approach to digital value</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="difference-box reveal">
+          <div class="section-kicker">What sets me apart</div>
+          <h2>If you are looking for someone who thinks beyond the obvious, challenges conventional approaches and brings <span>creativity to complex business problems,</span> you are in the right place.</h2>
+          <p>I do not settle for the basic or simply follow the way things have always been done. I continuously explore new perspectives, test new ideas and challenge myself to elevate the work, the solution and the impact we can create together.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap reveal">
+        <div class="section-kicker">Continue exploring</div>
+        <h2>Curiosity of an innovator.<br>Mindset of an analyst.<br><span>Execution of a builder.</span></h2>
+        <p>Choose the next step and discover the experience, thinking and ambition behind my application.</p>
+        <div class="contact-actions">
+          <a class="button red" href="cover-letter.html">Read Cover Letter <span>↗</span></a>
+          <a class="button yellow" href="Vinicius_Martins_Talent_Cards_25_08_2026.pdf" target="_blank" rel="noopener noreferrer">Open Talent Card <span>↗</span></a>
+          <a class="button dark" href="Vinicius_Martins_CV_Business_Analyst.pdf" target="_blank" rel="noopener noreferrer">Open Resume <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>Vinicius Martins · Professional Portfolio</div>
+      <div>Business Analysis · Digital Transformation · AI &amp; Automation</div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+
+    window.addEventListener('scroll', () => {
+      const page = document.documentElement;
+      const total = page.scrollHeight - page.clientHeight;
+      const progress = total > 0 ? (page.scrollTop / total) * 100 : 0;
+      document.getElementById('progress').style.width = progress + '%';
+    });
+  </script>
+</body>
+</html>
